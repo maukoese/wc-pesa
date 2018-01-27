@@ -1,3 +1,16 @@
+                                       _
+		______   ____    _________| |   _______	   _______      _______	   ______
+		|   _ \_/_   | 	|           |  |   __  \   |   ____|  /   ____|   /  __  \
+		|  | |  | |  | 	|           |  |  |  |  |  |  |       |  |       |  |  |
+		|  | |  | |  | 	| /\	/ \ |  |  |__|  |  |  |____   |  |____   |  |__|  |
+		|  | |  | |  | 	|/  \  /   \|  |   ____/   |   ____|  |____   |  |   __   |
+		|  | |  | |  | 	|\   \/	   /|  |  |        |  |            |  |  |  |  |  |
+		|  | |  | |  | 	| \	  / |  |  |        |  |____    ____|  |  |  |  |  |
+		|__| |__| |__|	|  \____/   |  |__|        |_______|  |_______/  |__|  |__|
+				|	    |
+				|           |
+				|___________|
+						
 # wc-pesa
 A unified WooCommerce payments extension for Kenya
 
@@ -8,7 +21,7 @@ A unified WooCommerce payments extension for Kenya
 
 ###Development
 <p>I hope to develop this further into a full-fledged free, simple, direct and secure ecommerce payments system. You can help by contributing here:</p>
-<li><a href="https://github.com/ModoPesa/wc-pesa">This Plugin</a></li>
+<a href="https://github.com/ModoPesa/wc-pesa">This Plugin</a></li>
 <li><a href="https://github.com/ModoPesa/mpesa-php">MPesa PHP SDK</a></li>
 <li><a href="https://github.com/ModoPesa/wc-mpesa">MPesa For WooCommerce(IPN)</a></li>
 <li><a href="https://github.com/ModoPesa/wc-equitel">Equitel For WooCommerce(IPN)</a></li>
