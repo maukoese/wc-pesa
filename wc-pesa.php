@@ -205,7 +205,7 @@ function wc_pesa_gateway_init()
 			$this -> init_form_fields();
 			$this -> init_settings();
 
-			$this -> mpesa              = $this -> get_option( 'mpesa', );
+			$this -> mpesa              = $this -> get_option( 'mpesa' );
 			$this -> airtel              = $this -> get_option( 'airtel' );
 			$this -> equitel             = $this -> get_option( 'equitel' );
 
@@ -294,7 +294,7 @@ function wc_pesa_gateway_init()
 <p>
   ' . __('On your Safaricom phone go the M-PESA menu', 'woocommerce') . '</br>
   ' . __('Select Lipa Na M-PESA and then select Buy Goods and Services', 'woocommerce') . '</br>
-  ' . __('Enter the Till Number <strong>' . $this -> mpesa . '</strong>', 'woocommerce') . ' </br>
+  ' . __('Enter the Till Number <strong>' . $this -> get_option('mpesa') . '</strong>', 'woocommerce') . ' </br>
   ' . __('Enter the exact amount due and follow prompts', 'woocommerce') . '</br>
   ' . __('You will receive a confirmation SMS from M-PESA with a receipt number.', 'woocommerce') . ' </br>
   ' . __('Input your mobile service provider and the receipt number that you received from M-PESA below.', 'woocommerce') . '</br>
@@ -303,7 +303,7 @@ function wc_pesa_gateway_init()
 <p>
   ' . __('On your Airtel phone go the Airtel Money menu', 'woocommerce') . '</br>
   ' . __('Select Buy Goods and Services', 'woocommerce') . '</br>
-  ' . __('Enter the Till Number <strong>' . $this -> airtel . '</strong>', 'woocommerce') . ' </br>
+  ' . __('Enter the Till Number <strong>' . $this -> get_option('airtel') . '</strong>', 'woocommerce') . ' </br>
   ' . __('Enter the exact amount due and follow prompts', 'woocommerce') . '</br>
   ' . __('You will receive a confirmation SMS from Airtel with a receipt number.', 'woocommerce') . ' </br>
   ' . __('Input your mobile service provider and the receipt number that you received from Airtel below.', 'woocommerce') . '</br>
@@ -312,7 +312,7 @@ function wc_pesa_gateway_init()
 <p>
   ' . __('On your phone go the Equitel Money menu', 'woocommerce') . '</br>
   ' . __('Select Buy Goods and Services', 'woocommerce') . '</br>
-  ' . __('Enter the Till Number <strong>' . $this -> equitel . '</strong>', 'woocommerce') . ' </br>
+  ' . __('Enter the Till Number <strong>' . $this -> get_option('equitel') . '</strong>', 'woocommerce') . ' </br>
   ' . __('Enter the exact amount due and follow prompts', 'woocommerce') . '</br>
   ' . __('You will receive a confirmation SMS from Equitel with a receipt number.', 'woocommerce') . ' </br>
   ' . __('Input your mobile service provider and the receipt number that you received from Equitel below.', 'woocommerce') . '</br>
@@ -424,9 +424,15 @@ function wc_pesa_gateway_init()
 				';
 		}
 
-		public function validate_fields() { 
+		public function validate_fields() {
+			global $wpdb;
+	        $sql = "SELECT *
+	        FROM {$wpdb -> prefix}woocommerce_pesa_ipn
+	        WHERE code = '{$_POST['code']}";
 
-			if ($_POST['code']) {
+	        $results = $wpdb -> get_results( $sql, ARRAY_A );
+
+			if ($_POST['code'] && count( $results ) > 0 ) {
 				$success = true;
 			} else {					
 				$error_message = __("The Receipt Number field is required", 'woothemes');
